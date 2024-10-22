@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+typedef long long ll;
+
+ll climbStairs(ll n)
+{
+  if (n < 3) return n;
+
+  ll forSecondLast = 0; 
+  ll forLastStair = 1; 
+  ll stairsClimbed;
+
+  for (ll i = 1; i <= n; ++i)
+  {
+    stairsClimbed = forLastStair + forSecondLast;
+    forSecondLast = forLastStair;
+    forLastStair = stairsClimbed;
+  }
+  return stairsClimbed;
+}
+
+int32_t main()
+{
+  ll n;
+  cin >> n;
+  cout << climbStairs(n) << "\n";
+  return 0;
+}
+// Time Complexity - O(n)
+// Space Complexity - O(1)
